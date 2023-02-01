@@ -1,4 +1,13 @@
+"""
+Arrays module
+"""
+
+
 class Array:
+    """
+    Array with capacity implementation (C-like I suppose)
+    """
+
     def __init__(self, size):
         if size < 0:
             raise ValueError("Array size must not be negative")
@@ -8,19 +17,38 @@ class Array:
 
     @property
     def max_size(self):
+        """
+        Array maximal capacity
+        :return: max capacity
+        """
         return self.__max_size
 
     @property
     def length(self):
+        """
+        Number of items in array
+        :return: number of items
+        """
         return self.__length
 
     def add(self, value):
+        """
+        Add element to the end of array
+        :param value: value to add
+        :return:
+        """
         if self.__length + 1 > self.__max_size:
             raise OverflowError(f"Reached maximum of elements in ${self.__max_size} length array")
         self.__array[self.__length] = value
         self.__length = self.__length + 1
 
     def set(self, index, value):
+        """
+        Set value at specified index of array (replace element at index with value)
+        :param index: index to set
+        :param value: value to set
+        :return:
+        """
         if index < 0:
             raise IndexError(f"Index {index} is negative")
         if index >= self.__length:
@@ -28,6 +56,13 @@ class Array:
         self.__array[index] = value
 
     def insert(self, index, value):
+        """
+        Insert value at specified index of array
+        (insert value at specified index with moving of tail )
+        :param index: index to insert
+        :param value: value to insert
+        :return:
+        """
         if index < 0:
             raise IndexError(f"Index ${index} is negative")
         if index >= self.__length:
@@ -40,6 +75,11 @@ class Array:
         self.__length = self.__length + 1
 
     def delete(self, index):
+        """
+        Delete item with index from array
+        :param index: index to delete
+        :return:
+        """
         if index < 0:
             raise IndexError(f"Index ${index} is negative")
         if index >= self.__length:
@@ -49,6 +89,11 @@ class Array:
         self.__length = self.__length - 1
 
     def value_at(self, index):
+        """
+        Return value at specified index of array
+        :param index: index of item
+        :return: value of item
+        """
         if index < 0:
             raise IndexError(f"Index ${index} is negative")
         if index >= self.__length:
@@ -56,6 +101,11 @@ class Array:
         return self.__array[index]
 
     def linear_search(self, value):
+        """
+        Perform linear search of value in array
+        :param value: value to search
+        :return: index of found item value or -1
+        """
         current_runner_index = 0
         while current_runner_index < self.__length:
             if self.__array[current_runner_index] == value:
@@ -67,6 +117,11 @@ class Array:
             return current_runner_index
 
     def binary_search(self, value):
+        """
+        Perform binary search in array. It is supposed that array is sorted
+        :param value: value to search
+        :return:  index of found item or -1
+        """
         left_bound = 0
         right_bound = self.__length - 1
         while True:
@@ -91,4 +146,8 @@ class Array:
             return found_element_index
 
     def values(self):
+        """
+        Return all values as list
+        :return: values in array as list
+        """
         return self.__array[0: self.__length]

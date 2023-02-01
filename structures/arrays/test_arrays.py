@@ -1,13 +1,24 @@
+"""
+Arrays test module
+"""
 import time
 from unittest import TestCase
 
 import pytest
 
-from .array import Array
+from .arrays import Array
 
 
 class SearchTestCase(TestCase):
+    """
+    Search functionality tests
+    """
+
     def test_binary_search(self):
+        """
+        Binary search test
+        :return:
+        """
         search_method_name = "binary_search"
         values = (5, 4, 3, 2, 1)
         with pytest.raises(RuntimeError):
@@ -57,6 +68,10 @@ class SearchTestCase(TestCase):
                               search_func_name=search_method_name, is_measure=True)
 
     def test_linear_search(self):
+        """
+        Linear search test
+        :return:
+        """
         search_method_name = "linear_search"
         self._search_scenario(values=[], search_value=0, expected_index=-1,
                               search_func_name=search_method_name)
@@ -84,7 +99,8 @@ class SearchTestCase(TestCase):
         self._search_scenario(values=(1, 2, 3, 4, 5, 6), search_value=6, expected_index=5,
                               search_func_name=search_method_name)
 
-        self._search_scenario(values=["First", "Second", "Third", "Forth", "Fifth"], search_value="Second",
+        self._search_scenario(values=["First", "Second", "Third", "Forth", "Fifth"],
+                              search_value="Second",
                               expected_index=1,
                               search_func_name=search_method_name)
         values = (4, 3, 5, 2, 1)
@@ -109,7 +125,8 @@ class SearchTestCase(TestCase):
         self._search_scenario(values=values, search_value=999_999, expected_index=999_998,
                               search_func_name=search_method_name, is_measure=True)
 
-    def _search_scenario(self, values, search_value, expected_index, search_func_name, is_measure=False):
+    def _search_scenario(self, values, search_value, expected_index, search_func_name,
+                         is_measure=False):
         many_array = Array(len(values))
         for value in values:
             many_array.add(value)
@@ -126,10 +143,17 @@ class SearchTestCase(TestCase):
 
 
 class ArrayTestCase(TestCase):
+    """
+    Array actions tests
+    """
+
     def test_creation(self):
+        """
+        Test array creation
+        :return:
+        """
         with pytest.raises(ValueError):
             Array(-1)
-        assert "Array creation with negative length must generate ValueException"
 
         zero_array = Array(0)
         assert zero_array.max_size == 0
@@ -147,6 +171,10 @@ class ArrayTestCase(TestCase):
         assert an_array.values() == []
 
     def test_add(self):
+        """
+        Test array add element operation
+        :return:
+        """
         zero_array = Array(0)
         self.assertRaises(OverflowError, zero_array.add, 555)
 
@@ -177,6 +205,10 @@ class ArrayTestCase(TestCase):
         assert many_extra_array.values() == many_values
 
     def test_set(self):
+        """
+        Test array's set element operation
+        :return:
+        """
         set_value = "A value"
         zero_array = Array(0)
         self.assertRaises(IndexError, zero_array.set, -1, set_value)
@@ -215,6 +247,10 @@ class ArrayTestCase(TestCase):
         assert many_array.length == len(values)
 
     def test_insert(self):
+        """
+        Test array's insert operation
+        :return:
+        """
         insert_value = "A value"
         zero_array = Array(0)
         self.assertRaises(IndexError, zero_array.insert, -1, insert_value)
@@ -258,6 +294,10 @@ class ArrayTestCase(TestCase):
             assert True
 
     def test_delete(self):
+        """
+        Test array's delete operation
+        :return:
+        """
         zero_array = Array(0)
         self.assertRaises(IndexError, zero_array.delete, -1)
         self.assertRaises(IndexError, zero_array.delete, 0)
@@ -291,6 +331,10 @@ class ArrayTestCase(TestCase):
         assert many_array.values() == test_values
 
     def test_value_at(self):
+        """
+        Test array's value at index operation
+        :return:
+        """
         zero_array = Array(0)
         self.assertRaises(IndexError, zero_array.value_at, -1)
         self.assertRaises(IndexError, zero_array.value_at, 0)

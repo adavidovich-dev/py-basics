@@ -1,9 +1,11 @@
 # py-basics
 
-# Commands
+# Quality commands
+$ pytest
+
+$ pylint structures/**/*.py
 
 $ coverage run -m pytest -s
-
 $ coverage html && open htmlcov/index.html
 
 # Libraries installation process

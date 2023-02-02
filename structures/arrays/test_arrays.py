@@ -329,11 +329,8 @@ class ArrayTestCase(TestCase):
         many_array.insert(many_array.length - 1, "Extra value")
         assert many_array.length == many_array.max_size
 
-        try:
+        with pytest.raises(OverflowError):
             many_array.insert(many_array.length - 1, "Super extra value")
-            assert False
-        except OverflowError:
-            assert True
 
     def test_delete(self):
         """

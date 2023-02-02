@@ -39,6 +39,48 @@ class SearchTestCase(TestCase):
         self._search_scenario(values=values, search_value=5, expected_index=4,
                               search_func_name=search_method_name)
 
+        values = (1, 1, 1, 2, 2, 3, 3, 4, 5)
+        self._search_scenario(values=values, search_value=0, expected_index=-1,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=1, expected_index=0,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=2, expected_index=3,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=3, expected_index=5,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=4, expected_index=7,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=5, expected_index=8,
+                              search_func_name=search_method_name)
+
+        values = (1, 1, 2, 2, 3, 3, 4, 5)
+        self._search_scenario(values=values, search_value=0, expected_index=-1,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=1, expected_index=0,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=2, expected_index=2,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=3, expected_index=4,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=4, expected_index=6,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=5, expected_index=7,
+                              search_func_name=search_method_name)
+
+        values = (1, 2, 3, 4, 5, 5, 5)
+        self._search_scenario(values=values, search_value=0, expected_index=-1,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=1, expected_index=0,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=2, expected_index=1,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=3, expected_index=2,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=4, expected_index=3,
+                              search_func_name=search_method_name)
+        self._search_scenario(values=values, search_value=5, expected_index=4,
+                              search_func_name=search_method_name)
+
         values = (1, 2, 3, 4, 5, 6)
         self._search_scenario(values=values, search_value=0, expected_index=-1,
                               search_func_name=search_method_name)

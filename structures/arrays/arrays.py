@@ -119,6 +119,7 @@ class Array:
     def binary_search(self, value):
         """
         Perform binary search in array. It is supposed that array is sorted
+        If array contains duplications then the most left element will be result of search
         :param value: value to search
         :return:  index of found item or -1
         """
@@ -128,6 +129,8 @@ class Array:
             center = (left_bound + right_bound) // 2
             if self.__array[center] == value:
                 found_element_index = center
+                while self.__array[found_element_index - 1] == self.__array[center]:
+                    found_element_index = found_element_index - 1
                 break
             if value < self.__array[center]:
                 right_bound = center - 1

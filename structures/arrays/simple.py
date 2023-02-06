@@ -1,9 +1,9 @@
 """
-Arrays module
+Simple array
 """
 
 
-class Array:
+class SimpleArray:
     """
     Array with capacity implementation (C-like I suppose)
     """
@@ -123,14 +123,18 @@ class Array:
         :param value: value to search
         :return:  index of found item or -1
         """
+        if self.__length == 0:
+            return -1
+
         left_bound = 0
         right_bound = self.__length - 1
         while True:
             center = (left_bound + right_bound) // 2
             if self.__array[center] == value:
                 found_element_index = center
-                while self.__array[found_element_index - 1] == self.__array[center]:
-                    found_element_index = found_element_index - 1
+                if found_element_index > 0:
+                    while self.__array[found_element_index - 1] == self.__array[center]:
+                        found_element_index = found_element_index - 1
                 break
             if value < self.__array[center]:
                 right_bound = center - 1
@@ -153,4 +157,4 @@ class Array:
         Return all values as list
         :return: values in array as list
         """
-        return self.__array[0: self.__length]
+        return tuple(self.__array[i] for i in range(0, self.__length))

@@ -47,8 +47,6 @@ class SearchTestCase(TestCase):
 
     def _search_scenario(self, test_data, search_func_name,
                          is_measure=False):
-        print(test_data)
-
         many_array = SimpleArray(len(test_data.list))
         for value in test_data.list:
             many_array.add(value)

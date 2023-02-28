@@ -15,6 +15,9 @@ class SimpleArray:
         self.__length = 0
         self.__array = [0] * self.__max_size
 
+    def __str__(self):
+        return str(self.__array)
+
     @property
     def max_size(self):
         """
@@ -158,3 +161,47 @@ class SimpleArray:
         :return: values in array as list
         """
         return tuple(self.__array[i] for i in range(0, self.__length))
+
+    def bubble_sort(self):
+        """
+        Perform bubble sort
+        :return: nothing
+        """
+        for i_index in range(0, self.__length):
+            for j_index in range(i_index + 1, self.__length):
+                i_item = self.__array[i_index]
+                j_item = self.__array[j_index]
+                if i_item > j_item:
+                    self.__array[j_index] = i_item
+                    self.__array[i_index] = j_item
+
+    def insert_sort(self):
+        """
+        Perform insert sort
+        :return: nothing
+        """
+        if self.__length == 0:
+            return
+        for i_index in range(1, self.__length):
+            selected = self.__array[i_index]
+            j_index = i_index
+            while j_index > 0 and self.__array[j_index - 1] > selected:
+                self.__array[j_index] = self.__array[j_index - 1]
+                j_index = j_index - 1
+            self.__array[j_index] = selected
+
+    def select_sort(self):
+        """
+        Perform select sort
+        :return: nothing
+        """
+        for i_index in range(0, self.__length):
+            i_item = self.__array[i_index]
+            min_index = i_index
+            for j_index in range(i_index + 1, self.__length):
+                j_item = self.__array[j_index]
+                if j_item < self.__array[min_index]:
+                    min_index = j_index
+            if min_index != i_index:
+                self.__array[i_index] = self.__array[min_index]
+                self.__array[min_index] = i_item

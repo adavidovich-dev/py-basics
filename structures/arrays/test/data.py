@@ -4,12 +4,6 @@ class SearchUnitData:
         self.value = value
         self.index = index
 
-    def __repr__(self):
-        return f"-- Test case --\n" \
-               f"Array: {self.list}\n" \
-               f"Testing value:{self.value} in index:{self.index}" \
-               f"\n"
-
 
 class AddUnitData:
     def __init__(self, a_list, add_value, check_list):
@@ -17,33 +11,27 @@ class AddUnitData:
         self.add_value = add_value
         self.check_list = check_list
 
-    def __repr__(self):
-        return f"-- Test case --\n" \
-               f"Array: {self.list}\n" \
-               f"Add value: {self.add_value}\n" \
-               f"Test on {self.check_list}\n"
-
 
 search_sorted_data = [
-    # SearchUnitData((), 0, -1),
-    # SearchUnitData((1,), -1, -1),
-    # SearchUnitData((1,), 1, 0),
-    # SearchUnitData((1, 2, 3, 4, 5), -1, -1),
-    # SearchUnitData((1, 2, 3, 4, 5), 1, 0),
-    # SearchUnitData((1, 2, 3, 4, 5), 3, 2),
-    # SearchUnitData((1, 2, 3, 4, 5), 5, 4),
-    # SearchUnitData((1, 2, 3, 4, 5, 6), -1, -1),
-    # SearchUnitData((1, 2, 3, 4, 5, 6), 1, 0),
-    # SearchUnitData((1, 2, 3, 4, 5, 6), 4, 3),
-    # SearchUnitData((1, 2, 3, 4, 5, 6), 6, 5),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), -1, -1),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 1, 0),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 3, 4),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 5, 8),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), -1, -1),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 1, 0),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 4, 6),
-    # SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 6, 10),
+    SearchUnitData((), 0, -1),
+    SearchUnitData((1,), -1, -1),
+    SearchUnitData((1,), 1, 0),
+    SearchUnitData((1, 2, 3, 4, 5), -1, -1),
+    SearchUnitData((1, 2, 3, 4, 5), 1, 0),
+    SearchUnitData((1, 2, 3, 4, 5), 3, 2),
+    SearchUnitData((1, 2, 3, 4, 5), 5, 4),
+    SearchUnitData((1, 2, 3, 4, 5, 6), -1, -1),
+    SearchUnitData((1, 2, 3, 4, 5, 6), 1, 0),
+    SearchUnitData((1, 2, 3, 4, 5, 6), 4, 3),
+    SearchUnitData((1, 2, 3, 4, 5, 6), 6, 5),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), -1, -1),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 1, 0),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 3, 4),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5), 5, 8),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), -1, -1),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 1, 0),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 4, 6),
+    SearchUnitData((1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6), 6, 10),
     SearchUnitData(range(1, 1_000), -1, -1),
     SearchUnitData(range(1, 1_000), 1, 0),
     SearchUnitData(range(1, 1_000), 444, 443),
@@ -76,4 +64,21 @@ add_sorted_data = [
     AddUnitData((100, 200, 300, 400), 450, (100, 200, 300, 400, 450)),
 
     AddUnitData(("a", "b", "c", "e", "f", "g"), "d", ("a", "b", "c", "d", "e", "f", "g"))
+]
+
+sort_data = [
+    {'array': (), 'test': ()},
+    {'array': (1,), 'test': (1,)},
+    {'array': (1, 2), 'test': (1, 2)},
+    {'array': (2, 1), 'test': (1, 2)},
+    {'array': (3, 2, 1), 'test': (1, 2, 3)},
+    {'array': (4, 3, 2, 1), 'test': (1, 2, 3, 4)},
+    {'array': (1, 3, 2), 'test': (1, 2, 3)},
+    {'array': (1, 3, 2, 4), 'test': (1, 2, 3, 4)},
+    {'array': (2, 1, 7, 5, 3, 6, 8), 'test': (1, 2, 3, 5, 6, 7, 8)},
+    {'array': (2, 2), 'test': (2, 2)},
+    {'array': (3, 3, 3), 'test': (3, 3, 3)},
+    {'array': (1, 3, 3, 2), 'test': (1, 2, 3, 3)},
+    {'array': (1, 2, 3, 5, 4, 4), 'test': (1, 2, 3, 4, 4, 5)},
+    {'array': range(1, 1_000), 'test': range(1, 1_000)},
 ]

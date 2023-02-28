@@ -25,8 +25,6 @@ class SearchTestCase(TestCase):
 
     def _search_scenario(self, test_data,
                          is_measure=False):
-        print(test_data)
-
         many_array = OrderedArray(len(test_data.list))
         for value in test_data.list:
             many_array.add(value)
@@ -36,7 +34,7 @@ class SearchTestCase(TestCase):
         end_time = time.time()
         if is_measure:
             print(
-                f"\n--- Find element took {(end_time - start_time) * 1000} milliseconds "
+                f"\n--- Element searching took {(end_time - start_time) * 1000} milliseconds "
                 f"in {many_array.length}-length array---\n")
         assert found_index == test_data.index
 
@@ -90,7 +88,6 @@ class ArrayTestCase(TestCase):
             self._add_scenario(test_case_data)
 
     def _add_scenario(self, test_case):
-        print(test_case)
         many_array = OrderedArray(len(test_case.list) + 1)
         for value in test_case.list:
             many_array.add(value)

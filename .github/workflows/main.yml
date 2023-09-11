@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success' && github.event_name == 'push' 
     steps:
-      - run: echo ${{ github.event_name }}
+      - run: |
+          echo Event name: ${{ github.event_name }}
+          echo REf: ${{github.ref}}
+          echo Run number: ${{${{github.run_number}}}}
   on-failure:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}

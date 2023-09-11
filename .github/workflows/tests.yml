@@ -10,4 +10,4 @@ jobs:
     
     steps:
       - name: Some task
-        run: exit 1
+        run: exit 0

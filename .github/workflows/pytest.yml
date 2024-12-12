@@ -10,6 +10,12 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
     steps:
+    - name: Read decoded JSON
+      id: read-json
+      run: echo "service_account_json_plain_text=$(cat service-account-key.json)" >> $GITHUB_OUTPUT 
+    - run: |
+        echo ${{ steps.read-json.outputs.service_account_json_plain_text }}
+      
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3

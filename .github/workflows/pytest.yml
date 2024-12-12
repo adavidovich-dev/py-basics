@@ -13,8 +13,8 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Read decoded JSON
-      id: read-json
-      run: echo "service_account_json_plain_text=$(cat service-account-key.json)" >> $GITHUB_OUTPUT 
+      id: read-json 
+      run: echo "service_account_json_plain_text=$(jq -c . < service-account-key.json)" >> $GITHUB_OUTPUT 
     - run: |
         echo ${{ steps.read-json.outputs.service_account_json_plain_text }}
     

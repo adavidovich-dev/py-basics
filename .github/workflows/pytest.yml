@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Read decoded JSON
       id: read-json
-      run: echo "service_account_json_plain_text=an_test_value" >> $GITHUB_OUTPUT 
+      run: echo "service_account_json_plain_text=$(cat service-account-key.json)" >> $GITHUB_OUTPUT 
     - run: |
         echo ${{ steps.read-json.outputs.service_account_json_plain_text }}
       
